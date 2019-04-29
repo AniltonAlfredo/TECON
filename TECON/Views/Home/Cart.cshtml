@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+<!-- ======= 2.01 Page Title Area ====== -->
+<div class="pageTitleArea animated">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pageTitle">
+                    <div class="h2">Cart</div>
+                    <ul class="pageIndicate">
+                        <li><a href="">home</a></li>
+                        <li><a href="">cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======= /2.01 Page Title Area ====== -->
+<div class="cartArea secPdngB">
+    <div class="container animated">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="cartTable">
+                    <li class="cartHead clearfix">
+                        <div class="product">product</div>
+                        <div class="price">price</div>
+                        <div class="duration">duration</div>
+                        <div class="total">total</div>
+                    </li>
+                    <li class="singleIteam clearfix category-host">
+                        <!-- category calss hove to use for host icon-->
+                        <div class="product">
+                            <span class="closeIcon">x</span>
+                            <div class="pTxt">Linux Web Hosting</div>
+                        </div>
+                        <div class="price">$10/mo</div>
+                        <div class="duration">
+                            <span>2 mo</span>
+                            <ul class="cartOpt">
+                                <li data-code="2 mo" data-price="$10">2 Month</li>
+                                <li data-code="4 mo" data-price="$15">4 Month</li>
+                                <li data-code="8 mo" data-price="$30">8 Month</li>
+                                <li data-code="1 yr" data-price="$40">1 Year</li>
+                                <li data-code="2 yr" data-price="$60">2 Year</li>
+                            </ul>
+                        </div>
+                        <div class="total">$20</div>
+                    </li>
+                    <li class="singleIteam clearfix category-domain">
+                        <!-- category calss hove to use for domain icon-->
+                        <div class="product">
+                            <span class="closeIcon">x</span>
+                            <div class="pTxt">www.spark.com</div>
+                        </div>
+                        <div class="price">$9/yr</div>
+                        <div class="duration">
+                            <span>1 yr</span>
+                            <ul class="cartOpt">
+                                <li data-code="8 mo" data-price="$5">6 Month</li>
+                                <li data-code="1 yr" data-price="$9">1 Year</li>
+                                <li data-code="2 yr" data-price="$16">2 Year</li>
+                                <li data-code="2 yr" data-price="$30">4 Year</li>
+                                <li data-code="2 yr" data-price="$40">6 Year</li>
+                            </ul>
+                        </div>
+                        <div class="total">$9</div>
+                    </li>
+                    <li class="coupon clearfix">
+                        <form action="#" class="couponForm">
+                            <input type="text" placeholder="Enter your coupon code">
+                            <button type="submit">Apply coupon</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-5 offset-lg-7 col-md-12">
+                <div class="cartTotal">
+                    <div class="h4 title">Cart Total:</div>
+                    <div><span class="subTotal">Subtotal:</span> <span>$25</span></div>
+                    <div><span class="Total">Total:</span> <span>$25</span></div>
+                    <a href="checkout.html" class="totalBtn">Proceed to checkout <i class="icofont icofont-long-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sectionBar"></div>
+
+
