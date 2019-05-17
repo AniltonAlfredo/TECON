@@ -1917,7 +1917,7 @@ header a.cart i {
 }
 
 .domainArea {
-    background: #233141 url(../../img/icon/domain-bg.jpg);
+    /*background: #233141 url(../../img/icon/domain-bg.jpg);*/
     color: #fff;
     padding: 60px 0;
     background-repeat: repeat;

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/css/responsive/responsive.css">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <!-- Novas referências -->
-
+@using Microsoft.AspNet.Identity
 </head>
 <body>
 
@@ -44,34 +44,55 @@
                     <div class="row">
                         <div class="col-lg-5 col-md-2 col-5">
                             <div class="langOpt">
-                                <span class="langIcon"><span class="langCode">Idioma</span><i class="icofont icofont-caret-down"></i> </span>
-                                <ul class="lang">
+                                <span class="langIcon"><span class="langCode"></span> </span>
+                                @*<ul class="lang">
                                     <li data-code="en">Inglês</li>
                                     <li data-code="fr">Françês</li>
                                     <li data-code="pt">Português</li>
                                     <li data-code="ch">Mandarim</li>
-                                </ul>
+                                </ul>*@
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-10 col-7">
                             <ul class="topInfo">
                                 <li class="call"><a href="tel:+244-931-163-507"><i class="icofont icofont-ui-call"></i>+244-931-163-507</a></li>
-                                <li class="email"><a href="aniltonengenheiro@outlook.pt"><i class="icofont icofont-ui-v-card"></i>aniltonengenheiro@outlook.pt</a></li>
-                                <li class="clientAreaLi"><span><i class="icofont icofont-user-alt-3"></i>Área do Cliente</span></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li class="email"><a href="/Manage/"><i class="icofont icofont-ui-v-card"></i>@User.Identity.GetUserName()</a></li>
+                                    <li>
+                                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <ul class="nav navbar-nav navbar-right">
+
+                                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="clientAreaLi"><span><i class="icofont icofont-user-alt-3"></i>Área do Cliente</span></li>
+                                }
                             </ul>
                             <div class="clientLogin">
-                                <form action="login.php" method="post">
-                                    <div class="closeBtn"><i class="icofont icofont-close"></i></div>
-                                    <div class="h5">sign in</div>
-                                    <div class="userName"><input name="userName" placeholder="Nome do Usuário" type="text"></div>
-                                    <div class="password"><input name="password" placeholder="Palavra-passe" type="password"></div>
-                                    <input type="submit" value="Entrar">
-                                    <div class="h5">Esqueceu a sua palavra-passe? <a href="#">Click aqui</a></div>
-                                    <div class="logBtm">
-                                        <div class="h5">Não tem uma conta ainda?</div>
-                                        <a href="#" class="signUp">Click aqui para criar.</a>
-                                    </div>
-                                </form>
+                              
+                                    <form action="/Account/Login" method="post">
+
+                                        @Html.AntiForgeryToken()
+                                        <div class="closeBtn"><i class="icofont icofont-close"></i></div>
+                                        <div class="h5">sign in</div>
+                                        <div class="userName"><input name="Email" placeholder="Nome do Usuário" type="text"></div>
+                                        <div class="password"><input name="Password" placeholder="Palavra-passe" type="password"></div>
+                                        <input type="submit" value="Entrar">
+                                        <div class="h5">Esqueceu a sua palavra-passe? <a href="/Account/ForgotPassword">Click aqui</a></div>
+                                        <div class="logBtm">
+                                            <div class="h5">Não tem uma conta ainda?</div>
+                                            <a href="/Account/Register" class="signUp">Click aqui para criar.</a>
+                                        </div>
+                                    </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -107,14 +128,17 @@
                                     <li>
                                         <a href="#">Domínio</a>
                                         <ul class="sub-menu">
-                                            <li><a href="/HOME/AccountManage">Minha conta</a></li>
                                             <li><a href="/HOME/ComainSearch">Pesquisas de domínios</a></li>
-                                            <li><a href="/HOME/DomainManage">Configurações de domínios</a></li>
-                                            <li><a href="/HOME/HostManage">Configurações de Hospedagem</a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a href="/HOME/AccountManage">Minha conta</a></li>
+                                                <li><a href="/HOME/DomainManage">Configurações de domínios</a></li>
+                                                <li><a href="/HOME/HostManage">Configurações de Hospedagem</a></li>
+                                            }
                                         </ul>
                                     </li>
                                     
-                                    <li><a href="/Home/Support">SUPORTE</a></li>
+                                    <li><a href="/Home/Support">Suporte</a></li>
                                     <li>
                                         <a href="#">Blog</a>
                                         <ul class="sub-menu">
@@ -137,11 +161,10 @@
                 </div>
             </div>
         </header>
-        <hr />
+        
         <!-- ======= 1.01 Header Area ====== -->
         @RenderBody()
 
-        <hr />
         <footer class="secPdngT animated">
             <div class="container">
                 <div class="row">
@@ -185,7 +208,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="contactInfo">
-                            <div class="h4">contact with us</div>
+                            <div class="h4">Cantacte-nos</div>
                             <span class="call"><a href="tel:+244-931-163-507"><i class="icofont icofont-ui-call"></i>+244-931-163-507</a></span>
                             <span class="email"><a href="aniltonengenheiro@outlook.pt"><i class="icofont icofont-ui-v-card"></i>aniltonengenheiro@outlook.pt</a></span>
                             <a href="" class="contactBtn Btn">Envie-nos uma mensagem</a>

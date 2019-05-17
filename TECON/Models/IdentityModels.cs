@@ -20,6 +20,15 @@ namespace TECON.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Login> Login { get; set; }
+        public DbSet<Pagamento> Pagamento { get; set; }
+        public DbSet<Tipo> Tipo { get; set; }
+        public DbSet<Hospedagem> Hospedagem { get; set; }
+        public DbSet<Dominio> Dominio { get; set; }
+        public DbSet<Propriedade> Propriedade { get; set; }
+        public DbSet<Carrinho> Carrinho { get; set; }
+                       
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
